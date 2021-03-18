@@ -6,57 +6,48 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MainViewController: UITableViewController {
     
-    let restaurantNames = [
-        "Burger Heroes", "Kitchen", "Bonsai", "Дастархан",
-        "Индокитай", "X.O", "Балкан Гриль", "Sherlock Holmes",
-        "Speak Easy", "Morris Pub", "Вкусные истории",
-        "Классик", "Love&Life", "Шок", "Бочка"
-    ]
+    var places: Results<Place>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        places = localRealm.objects(Place.self)
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return restaurantNames.count
+        return places.isEmpty ? 0 : places.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
 
         // Configure the cell...
-        
-        cell.nameLabel.text = restaurantNames[indexPath.row]
-        cell.imageOfPlace.image = UIImage(named: restaurantNames[indexPath.row])
+        let place = places[indexPath.row]
+
+        cell.nameLabel.text = place.name
+        cell.locationLabel.text = place.location
+        cell.typeLabel.text = place.type
+        cell.imageOfPlace.image = UIImage(data: place.imageData!)
+
         cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2
         cell.imageOfPlace.clipsToBounds = true
-        
-//        var content = cell.defaultContentConfiguration()
 
-//        content.text = restaurantNames[indexPath.row]
-//        content.image = UIImage(named: restaurantNames[indexPath.row])
-//        content.imageProperties.cornerRadius = cell.frame.size.height / 2
-        
-//        cell.contentConfiguration = content
-
-//        cell.textLabel?.text = restaurantNames[indexPath.row]
-//        cell.imageView?.image = UIImage(named: restaurantNames[indexPath.row])
-        
         return cell
     }
     
-    // MARK: - Table view delegate
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 85
+    @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
+        guard let newPlaceVC = segue.source as? NewPlaceViewController else { return }
+        
+        newPlaceVC.saveNewPlace()
+//        places.append(newPlaceVC.newPlace!)
+        tableView.reloadData()
     }
 
     /*
