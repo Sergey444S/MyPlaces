@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eE6-fu-Aj1">
-                                <rect key="frame" x="0.0" y="88" width="414" height="97"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="32"/>
                                 <segments>
                                     <segment title="Date"/>
                                     <segment title="Name"/>
@@ -26,9 +26,8 @@
                                     <action selector="sortSelection:" destination="XHl-M4-rqG" eventType="valueChanged" id="4qE-NZ-47O"/>
                                 </connections>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wgK-bW-Kqb">
-                                <rect key="frame" x="0.0" y="185" width="414" height="711"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wgK-bW-Kqb">
+                                <rect key="frame" x="0.0" y="120" width="414" height="776"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="UgG-sZ-pG8" customClass="CustomTableViewCell" customModule="MyPlaces" customModuleProvider="target">
@@ -97,9 +96,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="eE6-fu-Aj1" firstAttribute="leading" secondItem="vLd-Bj-Ebn" secondAttribute="leading" id="2zB-qV-EUF"/>
+                            <constraint firstItem="wgK-bW-Kqb" firstAttribute="trailing" secondItem="vLd-Bj-Ebn" secondAttribute="trailing" id="6oR-ZR-Y5l"/>
+                            <constraint firstItem="wgK-bW-Kqb" firstAttribute="bottom" secondItem="lIu-Ix-tqO" secondAttribute="bottom" id="OgQ-s5-VoE"/>
                             <constraint firstItem="eE6-fu-Aj1" firstAttribute="trailing" secondItem="vLd-Bj-Ebn" secondAttribute="trailing" id="b5v-7z-9l2"/>
                             <constraint firstItem="wgK-bW-Kqb" firstAttribute="top" secondItem="eE6-fu-Aj1" secondAttribute="bottom" constant="1" id="c9w-PO-6vP"/>
                             <constraint firstItem="wgK-bW-Kqb" firstAttribute="top" secondItem="eE6-fu-Aj1" secondAttribute="bottom" constant="1" id="hmn-js-Bgt"/>
+                            <constraint firstItem="wgK-bW-Kqb" firstAttribute="leading" secondItem="vLd-Bj-Ebn" secondAttribute="leading" id="uxu-0D-cuJ"/>
                             <constraint firstItem="eE6-fu-Aj1" firstAttribute="top" secondItem="vLd-Bj-Ebn" secondAttribute="top" id="vED-08-cR8"/>
                         </constraints>
                     </view>
@@ -269,7 +271,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HKY-iu-bcL" customClass="RatingControl" customModule="MyPlaces" customModuleProvider="target">
+                                                <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="252" placeholderIntrinsicHeight="44" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HKY-iu-bcL" customClass="RatingControl" customModule="MyPlaces" customModuleProvider="target">
                                                     <rect key="frame" x="81" y="48" width="252" height="44"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="starCount">
@@ -355,6 +357,11 @@
             <point key="canvasLocation" x="862" y="-708"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="HKY-iu-bcL">
+            <size key="intrinsicContentSize" width="252" height="44"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="cdS-IP-8aI"/>
     </inferredMetricsTieBreakers>
