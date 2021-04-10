@@ -6,11 +6,13 @@
 //
 
 import UIKit
+//import Cosmos
 
 class NewPlaceViewController: UITableViewController {
     
     var currentPlace: Place!
     var imageIsChanged = false
+//    var currentRating = 0.0
 
     @IBOutlet var saveButton: UIBarButtonItem!
     
@@ -19,6 +21,7 @@ class NewPlaceViewController: UITableViewController {
     @IBOutlet var placeLocation: UITextField!
     @IBOutlet var placeType: UITextField!
     @IBOutlet var ratingControl: RatingControl!
+//    @IBOutlet var cosmosView: CosmosView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,12 @@ class NewPlaceViewController: UITableViewController {
         placeName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         
         setupEditScreen()
+        
+//        cosmosView.settings.fillMode = .half
+//        cosmosView.didTouchCosmos = { rating in
+//            print("\(rating)")
+//            self.currentRating = rating
+//        }
     }
 
     // MARK: Table view delegate
@@ -63,6 +72,16 @@ class NewPlaceViewController: UITableViewController {
         }
     }
     
+    // MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier != "showMap" {
+            return
+        }
+        
+        let mapVC = segue.destination as! MapViewController
+        mapVC.place = currentPlace
+    }
+    
     func savePlace() {
         
         
@@ -81,6 +100,7 @@ class NewPlaceViewController: UITableViewController {
                              type: placeType.text,
                              imageData: imageData,
                              rating: Double(ratingControl.rating))
+//                             rating: Double(currentRating))
         
         if currentPlace != nil {
             try! localRealm.write {
@@ -110,6 +130,7 @@ class NewPlaceViewController: UITableViewController {
             placeLocation.text = currentPlace?.location
             placeType.text = currentPlace?.type
             ratingControl.rating = Int(currentPlace.rating)
+//            cosmosView.rating = currentPlace.rating
         }
     }
     
