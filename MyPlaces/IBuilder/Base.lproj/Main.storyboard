@@ -420,6 +420,17 @@
                                     <action selector="centerViewInUserLocation" destination="CXm-9K-fxz" eventType="touchUpInside" id="Acf-rR-SCP"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5f-t3-xfm">
+                                <rect key="frame" x="182" y="718" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="TmN-Q3-dlU"/>
+                                    <constraint firstAttribute="height" constant="50" id="zGY-B6-ptI"/>
+                                </constraints>
+                                <state key="normal" image="GetDirection"/>
+                                <connections>
+                                    <action selector="goButtonPressed" destination="CXm-9K-fxz" eventType="touchUpInside" id="Xt3-3s-n3h"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lB8-Ub-4lh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -431,7 +442,9 @@
                             <constraint firstItem="j5d-Xn-QnX" firstAttribute="leading" secondItem="lB8-Ub-4lh" secondAttribute="leading" id="H71-rJ-0zo"/>
                             <constraint firstItem="j5d-Xn-QnX" firstAttribute="top" secondItem="cTF-hZ-Ce4" secondAttribute="top" id="KZC-UG-Pih"/>
                             <constraint firstItem="MAi-2u-jtc" firstAttribute="centerY" secondItem="cTF-hZ-Ce4" secondAttribute="centerY" constant="-20" id="LLx-LF-NNQ"/>
+                            <constraint firstItem="lB8-Ub-4lh" firstAttribute="bottom" secondItem="P5f-t3-xfm" secondAttribute="bottom" constant="40" id="Swk-7A-0qV"/>
                             <constraint firstItem="itY-Ey-Z5H" firstAttribute="centerX" secondItem="cTF-hZ-Ce4" secondAttribute="centerX" id="WZA-WE-IRC"/>
+                            <constraint firstItem="P5f-t3-xfm" firstAttribute="centerX" secondItem="cTF-hZ-Ce4" secondAttribute="centerX" id="ZD5-4B-MrK"/>
                             <constraint firstItem="MAi-2u-jtc" firstAttribute="centerX" secondItem="cTF-hZ-Ce4" secondAttribute="centerX" id="aqJ-DU-Dif"/>
                             <constraint firstAttribute="bottom" secondItem="j5d-Xn-QnX" secondAttribute="bottom" id="rxn-xZ-VXZ"/>
                             <constraint firstItem="lB8-Ub-4lh" firstAttribute="trailing" secondItem="hLs-Io-ezn" secondAttribute="trailing" constant="40" id="sy4-Mv-KWt"/>
@@ -441,6 +454,7 @@
                     <connections>
                         <outlet property="addressLabel" destination="Brb-Eq-Be8" id="8LC-R2-Zua"/>
                         <outlet property="doneButton" destination="itY-Ey-Z5H" id="tcF-od-XTu"/>
+                        <outlet property="goButton" destination="P5f-t3-xfm" id="P64-Ah-G6y"/>
                         <outlet property="mapPinImage" destination="MAi-2u-jtc" id="2mM-hr-Lsa"/>
                         <outlet property="mapView" destination="j5d-Xn-QnX" id="cAM-iU-aAW"/>
                     </connections>
@@ -501,6 +515,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="AZ" width="25" height="24"/>
+        <image name="GetDirection" width="50" height="50"/>
         <image name="Location" width="128" height="128"/>
         <image name="Photo" width="195" height="196"/>
         <image name="Pin" width="42" height="42"/>
